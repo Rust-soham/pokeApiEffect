@@ -8,10 +8,17 @@ export class PokeApiUrl extends Context.Tag("PokeApiUrl")<
   string
 >() {}
 
-export const PokeApiUrlLive = Layer.effect(PokeApiUrl, Effect.gen(function* () {
-  const baseUrl = yield* Config.string("BASE_URL");
-  return `${baseUrl}/api/v2/pokemon`;        
-}));
+class hiDemo extends Context.Tag("hiDemo")<
+  hiDemo,
+  {
+    name: string;
+  }
+>() {}
 
-
-
+export const PokeApiUrlLive = Layer.effect(
+  PokeApiUrl,
+  Effect.gen(function* () {
+    const baseUrl = yield* Config.string("BASE_URL");
+    return `${baseUrl}/api/v2/pokemon`;
+  }),
+);
